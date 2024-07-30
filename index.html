@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pan_Number_Checker</title>
+</head>
+<style>
+    body{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 100px;
+        background-color: beige;
+    }
+    .container{
+        background-color: aqua;
+        border-radius: 10px;
+        
+    }
+    input{
+        border-radius: 10px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="inputs">
+            <p id="head">PAN Number</p>
+            <input type="text" name="pan" id="pan" placeholder="Enter PAN Number">
+        </div>
+        <div class="error" id="error"></div><br>
+        <button type="button" onclick="check()">Submit</button>
+    </div>
+    <script>
+        function check() {
+            const pan = document.getElementById("pan").value;
+            const pattern = /^[A-Z]{5}\d{4}[A-Z]$/;
+            const errorElement = document.getElementById("error");
+
+            if (pattern.test(pan)) {
+                errorElement.style.color = "green";
+                errorElement.innerHTML = "Valid PAN Number";
+            } else {
+                errorElement.style.color = "red";
+                errorElement.innerHTML = "Invalid PAN Number";
+                document.getElementById("pan").value = "";
+            }
+        }
+    </script>
+</body>
+
+</html>
